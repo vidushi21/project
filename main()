@@ -1,0 +1,37 @@
+#include<conio.h> 
+#include<process.h> 
+#include<stdio.h> 
+#include<dos.h> 
+#include<stdlib.h> 
+#include<fstream.h> 
+#include<graphics.h> 
+#define LEFT 75 
+#define RIGHT 77 
+#define UP 72 
+#define DOWN 80 
+#define ENTER 13 
+class CAR 
+{ 
+    public: 
+	int vel, cp, init, op1, op2, op3, level; 
+	long score; 
+	long lev_score[ 5 ]; 
+	char player[ 20 ]; 
+	CAR::CAR() 
+	{ 
+	    level = 1; 
+	    vel = 1; 
+	    cp = 300; 
+	    init = 0; 
+	    op1 = 0; 
+	    op2 = -20; 
+	    op3 = -40; 
+	    score = 0; 
+	    lev_score[ 0 ] = 10000; 
+	    lev_score[ 1 ] = 30000; 
+	    lev_score[ 2 ] = 60000; 
+	    lev_score[ 3 ] = 100000; 
+	    lev_score[ 4 ] = 150000; 
+	} 
+} 
+car; 
