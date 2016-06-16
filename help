@@ -1,0 +1,81 @@
+void help() 
+{ 
+    cleardevice(); 
+    settextstyle( 4, 0, 6 ); 
+    setcolor( 13 ); 
+    outtextxy( 200, 10, "HELP" ); 
+    textcolor( YELLOW ); 
+    gotoxy( 3, 6 ); 
+    cout << "\n\n\n\n\n\n\nDPR (Dangerous Road Racing is a simple game in which you have to lead a car by avoiding blocks on road.\nYou have to use the following keys to controll the car\n\n->UP\t--\tForward movement\n->LEFT\t--\tLeftside movement\n->RIGHT\t--\tRightside movement\n->q\t--\tExit from game at any time\n"; 
+    getch(); 
+    return ; 
+} 
+void menu() 
+{ 
+    int s = 1, t = 0, a, p = 140; 
+    do 
+    { 
+	do 
+	{ 
+	    cleardevice(); 
+	    setcolor( YELLOW ); 
+	    settextstyle( 1, 0, 4 ); 
+	    outtextxy( 230, 30, "MENU" ); 
+	    setfillstyle( 1, 2 ); 
+	    bar( 140, 80, 400, 82 ); 
+	    settextstyle( 1, 0, 1 ); 
+	    setcolor( 10 ); 
+	    outtextxy( 220, 137, "PLAY GAME" ); 
+	    outtextxy( 220, 167, "SCORES" ); 
+	    outtextxy( 220, 197, "HELP" ); 
+	    outtextxy( 220, 227, "ABOUT" ); 
+	    outtextxy( 220, 257, "EXIT" ); 
+	    setcolor( RED ); 
+	    rectangle( 200, p, 350, p + 20 ); 
+	    a = getch(); 
+	    switch ( a ) 
+	    { 
+	    case UP: if ( p > 140 ) 
+		{ 
+		    p -= 30; 
+		    s--; 
+		} 
+		break; 
+	    case DOWN: if ( p < 260 ) 
+		{ 
+		    p += 30; 
+		    s++; 
+		}; 
+		break; 
+	    case ENTER: a = 1; 
+		break; 
+	    default: break; 
+	    } 
+	} 
+	while ( a != 1 ); 
+	switch ( s ) 
+	{ 
+	case 1: play(); 
+	   	 break; 
+	case 2: disp_score(); 
+	  	  break; 
+	case 3: help(); 
+	   	 break; 
+	case 4: about(); 
+	    	break; 
+	case 5: exit( 0 ); 
+		 break; 
+	} 
+    } 
+    while ( t == 0 ); 
+    getch(); 
+} 
+void main() 
+{ 
+    int gdriver = DETECT, gmode, errorcode; 
+    initgraph( &gdriver, &gmode, "" ); 
+    cleardevice(); 
+    logo(); 
+    menu(); 
+    closegraph(); 
+}
