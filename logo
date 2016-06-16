@@ -1,0 +1,78 @@
+void logo () 
+{ 
+    for ( int i = 1;i < 250;i++ ) 
+    { 
+	int p; 
+	setcolor( YELLOW ); 
+	setfillstyle( SOLID_FILL, LIGHTBLUE ); 
+	settextstyle( 4, HORIZ_DIR, 5 ); 
+	outtextxy( 100, 100, "DANGEROUS ROAD" ); 
+	outtextxy( 200, 140, "RACING" ); 
+	setcolor( 4 ); 
+	bar3d( 50, 200, 550, 220, 10, 40 ); 
+	setcolor( WHITE ); 
+	settextstyle( 2, HORIZ_DIR, 5 ); 
+	outtextxy( 290, 380, "LOADING..." ); 
+	setfillstyle( SOLID_FILL, GREEN ); 
+	bar( 190, 400, 190 + i, 420 ); 
+	rectangle( 190, 400, 440, 420 ); 
+	delay( 15 ); 
+    } 
+    delay( 2000 ); 
+    cleardevice(); 
+    return ; 
+} 
+ 
+void loss( void ) 
+{ 
+    setcolor( 10 ); 
+    settextstyle( 2, 0, 9 ); 
+    outtextxy( 180, 150, "ONE CHANCE LOST" ); 
+    delay( 1000 ); 
+    return ; 
+} 
+void over( void ) 
+{ 
+    for ( int i = 1;i < 35;i++ ) 
+    { 
+	cleardevice();delay( 20 ); 
+	settextstyle( 1, 0, 6 ); 
+	setcolor( RED ); 
+	outtextxy( 150, 100, "GAME OVER" ); 
+	delay( 20 ); 
+    } 
+    delay( 2000 ); 
+    cleardevice(); 
+    score_store(); 
+    getch(); 
+    return ; 
+} 
+void score() 
+{ 
+    car.score = car.score + 11 * car.vel; 
+    setcolor( 5 ); 
+    settextstyle( 2, 0, 6 ); 
+    outtextxy( 530, 12, "Score " ); 
+    gotoxy( 75, 2 ); 
+    cout << car.score; 
+    return ; 
+} 
+void win() 
+{ 
+    cleardevice(); 
+    for ( int k = 0;k < 2;k++ ) 
+    { 
+	for ( int i = 0;i < 15;i++ ) 
+	{ 
+	    setcolor( i ); 
+	    settextstyle( 4, 0, 5 ); 
+	    outtextxy( 200, 100, "Congrats!!" ); 
+	    setcolor( i + 1 ); 
+	    outtextxy( 150, 200, "You won the race" ); 
+	    delay( 150 ); 
+	} 
+    } 
+    delay( 3000 ); 
+    score_store(); 
+    return ; 
+} 
