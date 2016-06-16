@@ -1,0 +1,63 @@
+int randx( void ) 
+{ 
+    int x = random( 56 * 8 ); 
+    if ( x < 22 * 8 ) 
+    { 
+	x = x + ( 22 * 8 ); 
+    } 
+    return ( x ); 
+} 
+void right() 
+{ 
+    if ( car.cp < 420 ) 
+    { 
+	car.cp += 10; 
+    } 
+    return ; 
+} 
+void left() 
+{ 
+    if ( car.cp > 180 ) 
+    { 
+	car.cp -= 10; 
+    } 
+    return ; 
+} 
+void score_store() 
+{ 
+    cleardevice(); 
+    setcolor( 4 ); 
+    settextstyle( 2, 0, 6 ); 
+    outtextxy( 10, 0, "Your score is" ); 
+    gotoxy( 20, 2 ); 
+    cout << car.score; 
+    outtextxy( 10, 40, "Enter your name to store :" ); 
+    gotoxy( 35, 4 ); 
+    gets( car.player ); 
+    ofstream score; 
+    score.open( "score.dat", ios::app ); 
+    score << "\n"; 
+    score.write( car.player, 20 ); 
+    score << car.score; 
+    score.close(); 
+} 
+void disp_score() 
+{ 
+    cleardevice(); 
+    setcolor( 5 ); 
+    settextstyle( 2, 0, 9 ); 
+    outtextxy( 200, 20, "SCORE BOARD" ); 
+    ifstream score( "score.dat" ); 
+    char ch; 
+    int i = 0; 
+    gotoxy( 1, 5 ); 
+    while ( score.get( ch ) ) 
+    { 
+	score.seekg( i, ios::beg ); 
+	score.get( ch ); 
+	cout << ch; 
+	i++; 
+    } 
+    getch(); 
+    return ; 
+} 
