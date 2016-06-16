@@ -1,0 +1,62 @@
+void level( void ) 
+{ 
+    int level = car.level; 
+    if ( car.score > car.lev_score[ level - 1 ] ) 
+    { 
+	if ( car.level < 5 ) 
+	{ 
+	    car.level++; 
+	    if ( car.vel < 4 ) 
+	    { 
+		car.vel++; 
+	    } 
+	} 
+	else 
+	{win();} 
+    } 
+    settextstyle( 2, 0, 6 ); 
+    setcolor( 5 ); 
+    outtextxy( 4, 12, "Level" ); 
+    gotoxy( 8, 2 ); 
+    cout << car.level; 
+    return ; 
+} 
+void about() 
+{ 
+    char opt; 
+    while ( !kbhit() ) 
+    { 
+	for ( int i = 300;kbhit() == 0;i++ ) 
+	{ 
+	    cleardevice(); 
+	    setcolor( 9 ); 
+	    settextstyle( 4, 0, 5 ); 
+	    setfillstyle( 9, 12 ); 
+	    outtextxy( 220, 0, "ABOUT" ); 
+	    bar( 220, 60, 370, 62 ); 
+	    settextstyle( 2, 0, 5 ); 
+	    setcolor( 2 ); 
+	    outtextxy( 20, 100, "We had completed our work as a part of our computer science project work." ); 
+	    outtextxy( 3, 115, "We had tried to reduce maximum problems in our program. Eventhough it may " ); 
+	    outtextxy( 3, 130, "consist several technical and logical problems." ); 
+	    outtextxy( 3, 165, "WE ARE........." ); 
+	    outtextxy( 3, 180, "Hold a key to enter menu...." ); 
+	    setcolor( 6 ); 
+	    settextstyle( 2, 0, 6 ); 
+	    outtextxy( 600 - i, 600 - i, "Niyas C" ); 
+	    outtextxy( i - 150, 215, "Muhammed Dilshad" ); 
+	    outtextxy( i - 30, i - 130, "Shafeeq " ); 
+	    outtextxy( 600 - i, i - 150, "Najah Muhammed" ); 
+	    outtextxy( 350, 600 - i, "Azharudheen" ); 
+	    setfillstyle( 1, 4 ); 
+	    bar3d( 180, 380, 450, 460, 4, 6 ); 
+	    setcolor( 1 ); 
+	    settextstyle( 2, 0, 10 ); 
+	    outtextxy( 280, 380, "S2C" ); 
+	    outtextxy( 215, 420, "2009-2010" ); 
+	    delay( 60 ); 
+	} 
+    } 
+    getch(); 
+    return ; 
+} 
