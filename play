@@ -1,0 +1,82 @@
+int play( void ) 
+{ 
+    car.score = 0; 
+    int life = 3, m, x1, x2, x3, s; 
+re: 
+    while ( life ) 
+    { 
+	cleardevice(); 
+	if ( car.op1 == 0 ) 
+	{ 
+	    x1 = randx(); 
+	    car.op1++; 
+	} 
+	else 
+	{ 
+	    opp1( x1 ); 
+	} 
+	if ( car.op2 == 0 ) 
+	{ 
+	    x2 = randx(); 
+	    car.op2++; 
+	} 
+	else if ( car.op2 < 1 ) 
+	{car.op2++;} 
+	else 
+	{ 
+	    opp2( x2 ); 
+	} 
+	if ( car.op3 == 0 ) 
+	{ 
+	    x3 = randx(); 
+	    car.op3++; 
+	} 
+	else if ( car.op3 < 1 ) 
+	{car.op3++;} 
+	else 
+	{ 
+	    opp3( x3 ); 
+	} 
+	setcolor( 10 ); 
+	setfillstyle( 0, 0 ); 
+	bar3d( 0, 0, 80, 70, 4, 3 ); 
+	bgmove(); 
+	level(); 
+	score(); 
+	settextstyle( 2, 0, 6 ); 
+	setcolor( 5 ); 
+	outtextxy( 4, 44, "Life" ); 
+	gotoxy( 8, 4 );cout << life; 
+	if ( check( x2, car.op2, car.cp ) || check( x1, car.op1, car.cp ) || check( x3, car.op3, car.cp ) ) 
+	{ 
+	    loss(); 
+	    life--; 
+	    if ( life == 0 ) 
+	    { 
+		over(); 
+	    } 
+	    car.op1 = 1; 
+	    car.op2 = -16; 
+	    car.op3 = -32; 
+	    goto re; 
+	} 
+	if ( kbhit() ) 
+	{ 
+	    m = getch(); 
+	    switch ( m ) 
+	    { 
+	    case LEFT: left(); 
+		break; 
+	    case RIGHT: right(); 
+		break; 
+	    case 'q': exit( 0 ); 
+	    } 
+	} 
+	else 
+	{ 
+	    delay( 100 ); 
+	} 
+    } 
+    getch(); 
+    return ( 0 ); 
+} 
