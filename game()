@@ -1,0 +1,100 @@
+void bgmove() 
+{ 
+    if ( car.init > 5 ) 
+    { 
+	car.init = 1; 
+    } 
+    else 
+    { 
+	car.init += car.vel; 
+    } 
+    setcolor( RED ); 
+    setfillstyle( SOLID_FILL, RED ); 
+    sector( car.cp + 20, 330, 0, 180, 20, 30 ); 
+    setfillstyle( SOLID_FILL, YELLOW ); 
+    bar3d( car.cp, 333, car.cp + 37, 360, 4, 4 ); 
+    sector( car.cp + 20, 362, 180, 360, 20, 10 ); 
+    for ( int i = car.init;i < 70;i += 5 ) 
+    { 
+	setcolor( GREEN ); 
+	setfillstyle( 9, GREEN ); 
+	bar( 16 * 8, i * 8, 20 * 8, ( i + 2 ) * 8 ); 
+	bar( 60 * 8, i * 8, 64 * 8, ( i + 2 ) * 8 ); 
+    } 
+    return ; 
+} 
+void opp1( int x1 ) 
+{ 
+    if ( car.op1 < 600 ) 
+    { 
+	car.op1 += 10; 
+	setfillstyle( 1, RED ); 
+	bar3d( x1, car.op1, x1 + 30, car.op1 + 30, 2, 3 ); 
+    } 
+    else 
+    { 
+	car.op1 = 0; 
+    } 
+    return ; 
+} 
+void opp2( int x2 ) 
+{ 
+    if ( car.op2 < 600 ) 
+    { 
+	car.op2 += 10; 
+	setfillstyle( 1, YELLOW ); 
+	bar3d( x2, car.op2, x2 + 30, car.op2 + 30, 2, 3 ); 
+    } 
+    else 
+    { 
+	car.op2 = 0; 
+    } 
+    return ; 
+} 
+void opp3( int x3 ) 
+{ 
+    if ( car.op3 < 600 ) 
+    { 
+	car.op3 += 10; 
+	setfillstyle( 1, BLUE ); 
+	bar3d( x3, car.op3, x3 + 30, car.op3 + 30, 2, 3 ); 
+    } 
+    else 
+    { 
+	car.op3 = 0; 
+    } 
+    return ; 
+} 
+int check( int x, int op, int cp ) 
+{ 
+    int a[ 31 ], b[ 31 ], c[ 40 ], d[ 50 ]; 
+    for ( int i = 0;i < 30;i++ ) 
+    { 
+	a[ i ] = x + i; 
+    } 
+    for ( i = 0;i < 30;i++ ) 
+    { 
+	b[ i ] = op + i; 
+    } 
+    for ( i = 0;i < 40;i++ ) 
+    { 
+	c[ i ] = cp + i; 
+    } 
+ 
+    for ( i = 0;i < 50;i++ ) 
+    { 
+	d[ i ] = 300 + i; 
+    } 
+    for ( i = 0;i < 40;i++ ) 
+    { 
+	for ( int j = 0;j < 50;j++ ) 
+	{ 
+	    for ( int k = 0;k < 30;k++ ) 
+	    { 
+		if ( a[ k ] == c[ i ] && b[ k ] == d[ j ] ) 
+		    return 1; 
+	    } 
+	} 
+    } 
+    return 0; 
+} 
